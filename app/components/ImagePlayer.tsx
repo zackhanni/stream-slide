@@ -10,12 +10,36 @@ export default function ImagePlayer() {
   const [imageIndex, setImageIndex] = useState(0);
   const router = useRouter();
 
-  const images = [
-    "/pexels-joshsorenson-127513.jpg",
-    "/pexels-pixabay-33109.jpg",
-    "/pexels-pixabay-268966.jpg",
-    "/pexels-steve-1269968.jpg",
-  ];
+  // initialize empty array for local storage images
+  const [images, setImages] = useState<string[]>([]);
+
+  useEffect(() => {
+    // Function to get all images from local storage
+    const getImagesFromLocalStorage = () => {
+      const localStorageImages: string[] = [];
+      for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+        if ((key && key.endsWith(".jpg")) || key.endsWith(".png")) {
+          const image = localStorage.getItem(key);
+          if (image) {
+            localStorageImages.push(image);
+          }
+        }
+      }
+      return localStorageImages;
+    };
+
+    // Set images array from local storage
+    setImages(getImagesFromLocalStorage());
+  }, []);
+
+  // demo placeholder images
+  // const images = [
+  //   "/pexels-joshsorenson-127513.jpg",
+  //   "/pexels-pixabay-33109.jpg",
+  //   "/pexels-pixabay-268966.jpg",
+  //   "/pexels-steve-1269968.jpg",
+  // ];
 
   let currentImage = images[imageIndex];
 
