@@ -81,6 +81,35 @@ export default function ImagePlayer() {
               Fill screen
             </button>
             {/* manual change image */}
+
+            {/* try using bootstrap in the below form > input group > for makign cleaner looking buttons */}
+            {/* <form>
+              <label htmlFor="text" className="form-label">
+                Interval image
+              </label>
+              <div className="input-group">
+                <button
+                  className="btn btn-primary"
+                  onClick={() => {
+                    setImageIndex(imageIndex - 1);
+                  }}
+                >
+                  -
+                </button>
+                <div className="input-group-text">
+                  {imageIndex + 1} of {images.length}
+                </div>
+                <button
+                  className="btn btn-primary"
+                  onClick={() => {
+                    setImageIndex(imageIndex + 1);
+                  }}
+                >
+                  +
+                </button>
+              </div>
+            </form> */}
+
             <div>
               <p>Interval image</p>
               <div className="flex justify-center space-x-4">
